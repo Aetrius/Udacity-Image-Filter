@@ -30,7 +30,7 @@ import {filterImageFromURL, deleteLocalFiles} from './src/util/util';
   /**************************************************************************** */
   app.get( "/filteredimage", async ( req, res ) => {
 
-    const image_url = req.query.image_url;
+    const image_url:any = req.query.image_url;
     console.log('output ' + image_url /*+ image_url3 + image_url2*/)
 
     if (image_url == 'undefined') {
@@ -71,10 +71,10 @@ import {filterImageFromURL, deleteLocalFiles} from './src/util/util';
           fs.readdirSync(dirname).forEach((file: any) => {
             //console.log('list of files: ' + file);
 
-            fs.unlink(path + '\\'+ file,function(err: any){  
+            //fs.unlink(path + '\\'+ file,function(err: any){  
               //console.log(path + '\\'+ file );
 
-            });
+            //});
           });
         } catch {
           console.log('An error occurred while parsing url');

@@ -71,10 +71,10 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
           fs.readdirSync(dirname).forEach((file: any) => {
             //console.log('list of files: ' + file);
 
-            fs.unlink(path + '\\'+ file,function(err: any){  
+            //fs.unlink(path + '\\'+ file,function(err: any){  
               //console.log(path + '\\'+ file );
 
-            });
+            //});
           });
         } catch {
           console.log('An error occurred while parsing url');
