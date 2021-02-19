@@ -55,17 +55,9 @@ import {filterImageFromURL, deleteLocalFiles} from './src/util/util';
         console.log("sent file: " + localImageDownload);
         //link = new URL(localImageDownload).toString();
         //files = [link];
-        //deleteLocalFiles([localImageDownload]);
-        (async () => {
-          try {
-            await deleteLocalFiles([localImageDownload]);
-          } catch (e) {
-            // file doesn't exist, no permissions, etc..
-            // full list of possible errors is here 
-            // http://man7.org/linux/man-pages/man2/unlink.2.html#ERRORS
-            console.log(e);
-          }
-        })();
+        path = localImageDownload.substring(0,localImageDownload.lastIndexOf("\\")+1);
+        fs.unlinkSync(path);
+        
        } catch (error) {
          console.log("error: " + error)
        }
