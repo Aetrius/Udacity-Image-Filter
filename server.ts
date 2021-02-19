@@ -56,13 +56,25 @@ import {filterImageFromURL, deleteLocalFiles} from './src/util/util';
         //link = new URL(localImageDownload).toString();
         //files = [link];
         //deleteLocalFiles([localImageDownload]);
+        (async () => {
+          try {
+            await deleteLocalFiles([localImageDownload]);
+          } catch (e) {
+            // file doesn't exist, no permissions, etc..
+            // full list of possible errors is here 
+            // http://man7.org/linux/man-pages/man2/unlink.2.html#ERRORS
+            console.log(e);
+          }
+        })();
        } catch (error) {
          console.log("error: " + error)
        }
 
       })
       .then(() => {
-          var testvar :string;
+
+        
+          /*var testvar :string;
           testvar = '/var/app/current/util/tmp/';
           path = testvar.substring(0,testvar.lastIndexOf("\\")+1);
           console.log("\nFiles present in directory:"); 
@@ -82,7 +94,7 @@ import {filterImageFromURL, deleteLocalFiles} from './src/util/util';
               console.log('Error deleting file: ' + file + error);
             }
           
-      });
+      });*/
     }).catch (() => {
       console.log('error caught...');
     });
