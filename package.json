@@ -5,16 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.ts",
-<<<<<<< HEAD
-    "clean": "rimraf www/ || true",
-    "build": "npm run clean && tsc && mkdir www/tmp/ && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
-=======
     "tsc": "tsc",
     "dev": "ts-node-dev ./src/server.ts",
     "prod": "tsc && node ./www/server.js",
     "clean": "rimraf www/ || true",
     "build": "npm run clean && tsc && cp -rf src/config www/config && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd .."
->>>>>>> tmp
   },
   "dependencies": {
     "@types/node": "^14.14.30",
