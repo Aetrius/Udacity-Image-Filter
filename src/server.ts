@@ -52,11 +52,11 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
      .then(localImageDownload => {
        res.sendFile(localImageDownload)
        try {
-        console.log(localImageDownload);
+        console.log("sent file: " + localImageDownload);
         link = new URL(localImageDownload).toString();
         files = [link];
        } catch (error) {
-         console.log(error)
+         console.log("error: " + error)
        }
 
       })
@@ -78,7 +78,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
           //});
         //} catch {
           //console.log('An error occurred while parsing url');
-        //}
+        //},
         
         
     //});  
