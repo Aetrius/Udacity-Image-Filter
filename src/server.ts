@@ -62,7 +62,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       })
       .then(() => {
         try {
-          console.log(path.normalize(new URL(link).toString()));
+          //console.log(path.normalize(new URL(link).toString()));
           //var testvar :string;
           //testvar = path.normalize(link).toString();
           //path = testvar.substring(0,testvar.lastIndexOf("\\")+1);
