@@ -55,8 +55,8 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
         console.log("sent file: " + localImageDownload);
         //link = new URL(localImageDownload).toString();
         //files = [link];
-        path = localImageDownload.substring(0,localImageDownload.lastIndexOf("\\")+1);
-        fs.unlinkSync(path);
+        //path = localImageDownload.substring(0,localImageDownload.lastIndexOf("\\")+1);
+        fs.unlinkSync(localImageDownload);
         
        } catch (error) {
          console.log("error: " + error)
