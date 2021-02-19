@@ -70,9 +70,16 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
           fs.readdirSync(dirname).forEach((file: any) => {
             console.log('list of files: ' + file);
             try {
-              deleteLocalFiles([file]);
+              fs.access(file, fs.F_OK, (err:string) => {
+                if (err) {
+                  console.error(err)
+                }
+                console.log('attempting to delete: ' + file);
+                deleteLocalFiles(file);
+              });
+              
             } catch (error) {
-              console.log('Error deleting file: ' + file);
+              console.log('Error deleting file: ' + file + error);
             }
           
       });
