@@ -83,6 +83,8 @@ import {filterImageFromURL, deleteLocalFiles} from './src/util/util';
             }
           
       });
+    }).catch (() => {
+      console.log('error caught...');
     });
    } 
    else {
