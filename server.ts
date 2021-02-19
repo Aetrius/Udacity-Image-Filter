@@ -55,34 +55,23 @@ import {filterImageFromURL, deleteLocalFiles} from './src/util/util';
         console.log("sent file: " + localImageDownload);
         //link = new URL(localImageDownload).toString();
         //files = [link];
-        deleteLocalFiles([localImageDownload]);
+        //deleteLocalFiles([localImageDownload]);
        } catch (error) {
          console.log("error: " + error)
        }
 
       })
-      .then(() => {});
-        //try {
-          //console.log(path.normalize(new URL(link).toString()));
-          //var testvar :string;
-          //testvar = path.normalize(link).toString();
-          //path = testvar.substring(0,testvar.lastIndexOf("\\")+1);
-          //console.log("\nFiles present in directory:"); 
-          //var dirname = testvar.match(/(.*)[\/\\]/)[1]||'';
-          //fs.readdirSync(dirname).forEach((file: any) => {
-            //console.log('list of files: ' + file);
-
-            //fs.unlink(path + '\\'+ file,function(err: any){  
-              //console.log(path + '\\'+ file );
-
-            //});
-          //});
-        //} catch {
-          //console.log('An error occurred while parsing url');
-        //},
-        
-        
-    //});  
+      .then(() => {
+          var testvar :string;
+          testvar = '/var/app/current/util/tmp/';
+          path = testvar.substring(0,testvar.lastIndexOf("\\")+1);
+          console.log("\nFiles present in directory:"); 
+          var dirname = testvar.match(/(.*)[\/\\]/)[1]||'';
+          fs.readdirSync(dirname).forEach((file: any) => {
+            console.log('list of files: ' + file);
+          
+      });
+    });
    } 
    else {
       return res.status(404).send('Unable to locate image at path');
