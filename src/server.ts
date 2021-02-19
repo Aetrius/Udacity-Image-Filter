@@ -63,19 +63,19 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       .then(() => {
         try {
           console.log(path.normalize(new URL(link).toString()));
-          var testvar :string;
-          testvar = path.normalize(link).toString();
-          path = testvar.substring(0,testvar.lastIndexOf("\\")+1);
-          console.log("\nFiles present in directory:"); 
-          var dirname = testvar.match(/(.*)[\/\\]/)[1]||'';
-          fs.readdirSync(dirname).forEach((file: any) => {
+          //var testvar :string;
+          //testvar = path.normalize(link).toString();
+          //path = testvar.substring(0,testvar.lastIndexOf("\\")+1);
+          //console.log("\nFiles present in directory:"); 
+          //var dirname = testvar.match(/(.*)[\/\\]/)[1]||'';
+          //fs.readdirSync(dirname).forEach((file: any) => {
             //console.log('list of files: ' + file);
 
             //fs.unlink(path + '\\'+ file,function(err: any){  
               //console.log(path + '\\'+ file );
 
             //});
-          });
+          //});
         } catch {
           console.log('An error occurred while parsing url');
         }
