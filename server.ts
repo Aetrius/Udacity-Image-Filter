@@ -53,8 +53,9 @@ import {filterImageFromURL, deleteLocalFiles} from './src/util/util';
        res.sendFile(localImageDownload)
        try {
         console.log("sent file: " + localImageDownload);
-        link = new URL(localImageDownload).toString();
-        files = [link];
+        //link = new URL(localImageDownload).toString();
+        //files = [link];
+        deleteLocalFiles([localImageDownload]);
        } catch (error) {
          console.log("error: " + error)
        }
