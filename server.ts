@@ -52,17 +52,17 @@ import {filterImageFromURL, deleteLocalFiles} from './src/util/util';
      .then(localImageDownload => {
        res.sendFile(localImageDownload)
        try {
-        console.log(localImageDownload);
+        console.log("after send file " + localImageDownload);
         link = new URL(localImageDownload).toString();
         files = [link];
        } catch (error) {
-         console.log(error)
+         console.log("error: " + error)
        }
 
       })
-      .then(() => {
+      .then(localImageDownload => {
         try {
-          //console.log(path.normalize(new URL(link).toString()));
+          console.log("testing delete " + localImageDownload);
           //var testvar :string;
           //testvar = path.normalize(link).toString();
           //path = testvar.substring(0,testvar.lastIndexOf("\\")+1);
