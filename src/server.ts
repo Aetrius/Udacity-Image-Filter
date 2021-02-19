@@ -13,21 +13,6 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Use the body parser middleware for post requests
   app.use(bodyParser.json());
   var validUrl = require('valid-url');
-  // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
-  // GET /filteredimage?image_url={{URL}}
-  // endpoint to filter an image from a public url.
-  // IT SHOULD
-  //    1
-  //    1. validate the image_url query
-  //    2. call filterImageFromURL(image_url) to filter the image
-  //    3. send the resulting file in the response
-  //    4. deletes any files on the server on finish of the response
-  // QUERY PARAMATERS
-  //    image_url: URL of a publicly accessible image
-  // RETURNS
-  //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
-
-  /**************************************************************************** */
   app.get( "/filteredimage", async ( req, res ) => {
 
     const image_url:any = req.query.image_url;
@@ -45,50 +30,34 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
    var link : string;
    var path = require('path');
    const fs = require('fs');
+   var imagePath: string;
 
    if (validUrl.isUri(image_url)){
      await filterImageFromURL(image_url)
 
      .then(localImageDownload => {
        res.sendFile(localImageDownload)
-       try {
+       imagePath = localImageDownload;
         console.log("sent file: " + localImageDownload);
-        //link = new URL(localImageDownload).toString();
-        //files = [link];
-        //path = localImageDownload.substring(0,localImageDownload.lastIndexOf("\\")+1);
-        fs.unlinkSync('.' + localImageDownload);
-        
-       } catch (error) {
-         console.log("error: " + error)
-       }
-
       })
       .then(() => {
-
+        console.log('value for prompise: ' + imagePath);
         
-          /*var testvar :string;
-          testvar = '/var/app/current/util/tmp/';
-          path = testvar.substring(0,testvar.lastIndexOf("\\")+1);
-          console.log("\nFiles present in directory:"); 
-          var dirname = testvar.match(/(.*)[\/\\]/)[1]||'';
-          fs.readdirSync(dirname).forEach((file: any) => {
-            console.log('list of files: ' + file);
-            try {
-              fs.access(file, fs.F_OK, (err:string) => {
-                if (err) {
-                  console.error(err)
-                }
-                console.log('attempting to delete: ' + file);
-                deleteLocalFiles(file);
-              });
-              
-            } catch (error) {
-              console.log('Error deleting file: ' + file + error);
-            }
-          
-      });*/
-    }).catch (() => {
-      console.log('error caught...');
+          var testvar :string;
+          testvar = imagePath;
+
+          try {
+            fs.access(imagePath, fs.F_OK, (err:string) => {
+              if (err) {
+                console.error(err)
+              }
+              console.log('attempting to delete: ' + imagePath);
+              deleteLocalFiles([imagePath]);
+            });
+            
+          } catch (error) {
+            console.log('Error deleting file: ' + imagePath + error);
+          }
     });
    } 
    else {
