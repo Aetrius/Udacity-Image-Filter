@@ -60,7 +60,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
        }
 
       })
-      .then(() => {
+      .then(() => {});
         //try {
           //console.log(path.normalize(new URL(link).toString()));
           //var testvar :string;
@@ -78,10 +78,10 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
           //});
         //} catch {
           //console.log('An error occurred while parsing url');
-        }
+        //}
         
         
-    });  
+    //});  
    } 
    else {
       return res.status(404).send('Unable to locate image at path');
