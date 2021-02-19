@@ -69,6 +69,11 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
           var dirname = testvar.match(/(.*)[\/\\]/)[1]||'';
           fs.readdirSync(dirname).forEach((file: any) => {
             console.log('list of files: ' + file);
+            try {
+              deleteLocalFiles([file]);
+            } catch (error) {
+              console.log('Error deleting file: ' + file);
+            }
           
       });
     });
