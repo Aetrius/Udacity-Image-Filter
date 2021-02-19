@@ -1,16 +1,23 @@
 {
   "name": "image-filtering-app",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node server.ts",
+    "clean": "rimraf www/ || true",
+    "build": "npm run clean && tsc && mkdir www/tmp/ && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
   },
   "dependencies": {
+    "@types/node": "^14.14.30",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
+    "jade": "^0.29.0",
+    "jimp": "^0.16.1",
     "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "clean-css": "^5.1.0"
   }
 }
